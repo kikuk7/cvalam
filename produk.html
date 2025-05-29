@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produk - CV Sumber Alam Raya</title>
+  <link rel="stylesheet" href="style/style.css" />
+  <link rel="stylesheet" href="style/produk.css" />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="navbar container">
+      <img src="assets/logo.png" alt="Logo" class="logo" />
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">beranda</a></li>
+          <li><a href="tentang.html">tentang</a></li>
+          <li><a href="layanan.html">layanan</a></li>
+          <li><a href="produk.html" class="active">produk</a></li>
+          <li><a href="galeri.html">galeri</a></li>
+        </ul>
+      </nav>
+      <a href="kontak.html" class="btn-secondary">kontak</a>
+    </div>
+  </header>
+
+  <section class="product-section container">
+    <h2 id="product-title">Produk 1</h2>
+    <a href="https://wa.me/6289504798167" class="btn-wa">💬 hubungi kami</a>
+
+    <div class="product-carousel">
+      <button class="arrow-btn" onclick="prevProduct()">‹</button>
+
+      <model-viewer
+        id="model"
+        src="assets/Product/TangkiKotak.glb"
+        alt="Model Produk"
+        auto-rotate
+        camera-controls
+        ar
+        style="width: 100%; height: 500px; background-color: #eee; border-radius: 16px;">
+      </model-viewer>
+
+      <button class="arrow-btn" onclick="nextProduct()">›</button>
+    </div>
+
+    <div class="product-desc">
+      <p id="product-description">
+        Deskripsi produk 1. Jelaskan fungsi, keunggulan, atau aplikasi utamanya di industri.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <p>© sumber alam raya 2025</p>
+      <a href="faq.html" class="faq-link">FAQ ?</a>
+    </div>
+  </footer>
+
+  <script>
+    const products = [
+      {
+        title: "Produk 1 - Tangki Oli Hidrolik",
+        model: "assets/Product/TangkiKotak.glb",
+        description: "Tangki oli hidrolik untuk mesin industri dan alat berat."
+      },
+      {
+        title: "Produk 2 - Komponen Knalpot",
+        model: "assets/Product/KomponenKnalpotkykmangkok.glb",
+        description: "Komponen knalpot besi berkualitas tinggi untuk otomotif."
+      },
+      {
+        title: "Produk 3 - Ornamen Pagar",
+        model: "assets/Product/UjungPagar.glb",
+        description: "Ornamen pagar besi tempa untuk estetika arsitektur."
+      },
+      {
+        title: "Produk 4 - Penyangga Rak",
+        model: "assets/Product/KomponenKnalpot2lobang.glb",
+        description: "Penyangga rak logam untuk industri penyimpanan."
+      },
+      {
+        title: "Produk 5 - Komponen Baut Khusus",
+        model: "assets/Product/Kembang.glb",
+        description: "Komponen baut desain custom untuk keperluan mesin."
+      },
+      {
+        title: "Produk 6 - Komponen Pompa",
+        model: "assets/Product/bintang.glb",
+        description: "Komponen inti pompa untuk sistem hidrolik industri."
+      },
+      {
+        title: "Produk 7 - Konektor Pipa Besi",
+        model: "assets/Product/TangkiBulat.glb",
+        description: "Konektor pipa dengan kekuatan tinggi dan tahan tekanan."
+      },
+      {
+        title: "Produk 8 - Bracket Mesin",
+        model: "assets/Product/KomponenKnalpot3Lobang.glb",
+        description: "Bracket besi untuk pemasangan mesin industri."
+      },
+      {
+        title: "Produk 9 - Tutup Roda Custom",
+        model: "assets/Product/KomponenPagarS.glb",
+        description: "Tutup roda desain khusus untuk kendaraan dan mesin."
+      }
+    ];
+
+    let index = 0;
+
+    function updateProduct() {
+      const product = products[index];
+      document.getElementById("product-title").textContent = product.title;
+      document.getElementById("product-description").textContent = product.description;
+      document.getElementById("model").setAttribute("src", product.model);
+      document.getElementById("model").setAttribute("alt", product.title);
+    }
+
+    function nextProduct() {
+      index = (index + 1) % products.length;
+      updateProduct();
+    }
+
+    function prevProduct() {
+      index = (index - 1 + products.length) % products.length;
+      updateProduct();
+    }
+
+    // Inisialisasi produk saat halaman pertama kali dimuat
+    document.addEventListener('DOMContentLoaded', updateProduct);
+  </script>
+</body>
+</html>
